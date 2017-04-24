@@ -1,0 +1,14 @@
+{
+  "name": "at-form-random",
+  "private": true,
+  "dependencies": {
+    "tangere": "TangereJs/tangere#master",
+    "at-theme": "TangereJs/at-theme#master",
+    "at-i18n": "TangereJs/at-i18n#master",
+    "at-form-behaviors": "TangereJs/at-form-behaviors#master",
+    "iron-label": "PolymerElements/iron-label#master",
+    "at-doc-viewer": "TangereJs/at-doc-viewer#master",
+    "at-carbon-icon-color": "TangereJs/at-carbon-icon-color#master"
+  },
+  "version": "1.0.0.0"
+}
