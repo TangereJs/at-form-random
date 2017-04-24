@@ -3,7 +3,7 @@
 <link rel="import" href="../at-i18n/at-i18n-behavior.html">
 <link rel="import" href="../at-form-behaviors/at-form-behaviors.html">
 <link rel="import" href="../iron-label/iron-label.html">
-<link rel="import" href="../at-carbon-icon-color/at-carbon-icon-color.html" />
+<link rel="import" href="../at-carbon-icon-button/at-carbon-icon-button.html" />
 <link rel="import" href="at-form-random-input-validation.html">
 
 <dom-module id="at-form-random">
@@ -29,21 +29,18 @@
 
       .random-icon {
         display: block;
-        width: 32px;        
+        padding: 4px;
+        width: 40px;        
         vertical-align: middle;
-        padding: 0;        
       }
 
-      .random-icon:hover {
-        background-color: var(--primary-color, black);
-      }
     </style>
     
     <div id="atContainer" class="at-container">
       <iron-label id="label" for="input">{{label}}</iron-label>
       <div id="contentContainer" class="at-content-container">
         <input id="input" class="at-content has-placeholder" type="text" disabled$="{{disabled}}" placeholder$="{{placeholder}}"/>
-        <at-carbon-icon-color class="random-icon" icon="now:restart" on-tap="_generateRandomValue"></at-carbon-icon-color>
+        <at-carbon-icon-button class="random-icon" icon="now:restart" on-tap="_generateRandomValue"></at-carbon-icon-button>
       </div>
       <div id="hint"></div>
     </div>
@@ -157,7 +154,7 @@
        */
       maxChars: {
         type: Number,
-        value: 0,
+        value: 32,
         title: 'Maximum number of characters'
       }      
     },
