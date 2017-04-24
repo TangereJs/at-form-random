@@ -259,6 +259,10 @@
         this.value = inputValue;
       }
 
+      if (this.required && this.value === "") {
+        this._generateRandomValue();
+      }
+
       return this._validate(showError);
 
     },
@@ -286,6 +290,26 @@
       if(showError) this._handleValidationResult(validationResult);
 
       return validationResult.isValid;
+    },
+
+    _generateRandomValue: function() {
+      var randomValue = 
+        Math.random().toString(36).substring(2) + 
+        Math.random().toString(36).substring(2);
+
+      if (!this.maxChars) {
+        this.value = randomValue;
+        return;
+      }
+
+      randomValue = "";
+      while(randomValue.length < this.maxChars) {
+        randomValue += Math.random().toString(36).substring(2);
+      }
+
+      // we trim random value to maxChars so that value passes maxChars validation
+      randomValue = randomValue.substring(0, this.maxChars);
+      this.value = randomValue;
     },
 
     // include _updateUIValidState function and implement it to update

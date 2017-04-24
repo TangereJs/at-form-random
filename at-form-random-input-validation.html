@@ -5,7 +5,7 @@
   Tangere.behaviors.AtFormRandomInputValidation = {
 
     /*
-      Since its desired to use _validateData outside of at-form-text, eg. in BOT
+      Since its desired to use _validateData outside of at-form-random, eg. in BOT
       other environments must supply their own localization
     */
 
@@ -67,7 +67,7 @@
       // validate input parameters
       // schema must be object
       // @isHTMLUnknownElement(schema) thank you IE11 and Safari for not supporting custom elements. Thank you very much ...
-      validationResult.isValid = isObject(schema) || ((isHTMLUnknownElement(schema) || isHTMLElement(schema)) && schema.is === "at-form-text");
+      validationResult.isValid = isObject(schema) || ((isHTMLUnknownElement(schema) || isHTMLElement(schema)) && schema.is === "at-form-random");
       if (!validationResult.isValid) {
         validationResult.errorMessage = localizer("schema is not an object.")
         return validationResult;
@@ -111,7 +111,7 @@
 
       /*
         2. check data type
-        value assigned must match type specified in at-form-text.properties.value.type
+        value assigned must match type specified in at-form-random.properties.value.type
       */
       /*
         TAG P2
@@ -139,7 +139,7 @@
       /*
         TAG P4
 
-        for at-form-text check maxChars only
+        for at-form-random check maxChars only
       */
       validationResult = _validateMaxChars(schema.maxChars, value, localizer);
 
@@ -156,7 +156,7 @@
         };
 
         // calculate type strings for valueObj and object that is returned from valueSchema.type function
-        // valueSchema.type function comes from at-form-text.properties.value.type
+        // valueSchema.type function comes from at-form-random.properties.value.type
         var schemaTypeString = getTypeString(valueSchema.type());
         var nullTypeString = getTypeString(null);
         var valueObjTypeString = getTypeString(valueObj);
