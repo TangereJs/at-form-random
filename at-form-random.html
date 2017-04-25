@@ -40,7 +40,7 @@
       <iron-label id="label" for="input">{{label}}</iron-label>
       <div id="contentContainer" class="at-content-container">
         <input id="input" class="at-content has-placeholder" type="text" disabled$="{{disabled}}" placeholder$="{{placeholder}}"/>
-        <at-carbon-icon-button class="random-icon" icon="now:restart" on-tap="_generateRandomValue"></at-carbon-icon-button>
+        <at-carbon-icon-button class="random-icon" disabled$="{{disabled}}" icon="now:restart" on-tap="_generateRandomValue"></at-carbon-icon-button>
       </div>
       <div id="hint"></div>
     </div>
