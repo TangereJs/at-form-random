@@ -1,0 +1,1082 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>at-form-random tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../at-form-random.html">
+  <link rel="import" href="../../iron-test-helpers/iron-test-helpers.html" />
+  </head>
+  <body>
+    <test-fixture id="labelNotset">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="labelUndefined">
+      <template>
+        <at-form-random label="undefined"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="labelNull">
+      <template>
+        <at-form-random label="null"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="labelTrue">
+      <template>
+        <at-form-random label="true"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="labelFalse">
+      <template>
+        <at-form-random label="false"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="label-42">
+      <template>
+        <at-form-random label="-42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="label0">
+      <template>
+        <at-form-random label="0"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="label42">
+      <template>
+        <at-form-random label="42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="labelEmpty">
+      <template>
+        <at-form-random label=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="labelLorem ipsum">
+      <template>
+        <at-form-random label="lorem ipsum"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="label{}">
+      <template>
+        <at-form-random label="{}"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="label[]">
+      <template>
+        <at-form-random label="[]"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="labelFunction">
+      <template>
+        <at-form-random label="function f() { return undefined; }"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabelNotset">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabelUndefined">
+      <template>
+        <at-form-random hide-label="undefined"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabelNull">
+      <template>
+        <at-form-random hide-label="null"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabelTrue">
+      <template>
+        <at-form-random hide-label="true"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabelFalse">
+      <template>
+        <at-form-random hide-label="false"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabel-42">
+      <template>
+        <at-form-random hide-label="-42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabel0">
+      <template>
+        <at-form-random hide-label="0"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabel42">
+      <template>
+        <at-form-random hide-label="42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabelEmpty">
+      <template>
+        <at-form-random hide-label=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabelLorem ipsum">
+      <template>
+        <at-form-random hide-label="lorem ipsum"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabel{}">
+      <template>
+        <at-form-random hide-label="{}"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabel[]">
+      <template>
+        <at-form-random hide-label="[]"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabelFunction">
+      <template>
+        <at-form-random hide-label="function f() { return undefined; }"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholderNotset">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholderUndefined">
+      <template>
+        <at-form-random placeholder="undefined"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholderNull">
+      <template>
+        <at-form-random placeholder="null"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholderTrue">
+      <template>
+        <at-form-random placeholder="true"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholderFalse">
+      <template>
+        <at-form-random placeholder="false"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholder-42">
+      <template>
+        <at-form-random placeholder="-42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholder0">
+      <template>
+        <at-form-random placeholder="0"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholder42">
+      <template>
+        <at-form-random placeholder="42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholderEmpty">
+      <template>
+        <at-form-random placeholder=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholderLorem ipsum">
+      <template>
+        <at-form-random placeholder="lorem ipsum"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholder{}">
+      <template>
+        <at-form-random placeholder="{}"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholder[]">
+      <template>
+        <at-form-random placeholder="[]"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholderFunction">
+      <template>
+        <at-form-random placeholder="function f() { return undefined; }"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabledNotset">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabledUndefined">
+      <template>
+        <at-form-random disabled="undefined"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabledNull">
+      <template>
+        <at-form-random disabled="null"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabledTrue">
+      <template>
+        <at-form-random disabled="true"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabledFalse">
+      <template>
+        <at-form-random disabled="false"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabled-42">
+      <template>
+        <at-form-random disabled="-42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabled0">
+      <template>
+        <at-form-random disabled="0"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabled42">
+      <template>
+        <at-form-random disabled="42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabledEmpty">
+      <template>
+        <at-form-random disabled=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabledLorem ipsum">
+      <template>
+        <at-form-random disabled="lorem ipsum"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabled{}">
+      <template>
+        <at-form-random disabled="{}"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabled[]">
+      <template>
+        <at-form-random disabled="[]"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabledFunction">
+      <template>
+        <at-form-random disabled="function f() { return undefined; }"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideNotset">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideUndefined">
+      <template>
+        <at-form-random hide="undefined"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideNull">
+      <template>
+        <at-form-random hide="null"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideTrue">
+      <template>
+        <at-form-random hide="true"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideFalse">
+      <template>
+        <at-form-random hide="false"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hide-42">
+      <template>
+        <at-form-random hide="-42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hide0">
+      <template>
+        <at-form-random hide="0"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hide42">
+      <template>
+        <at-form-random hide="42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideEmpty">
+      <template>
+        <at-form-random hide=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLorem ipsum">
+      <template>
+        <at-form-random hide="lorem ipsum"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hide{}">
+      <template>
+        <at-form-random hide="{}"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hide[]">
+      <template>
+        <at-form-random hide="[]"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideFunction">
+      <template>
+        <at-form-random hide="function f() { return undefined; }"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="requiredNotset">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="requiredUndefined">
+      <template>
+        <at-form-random required="undefined"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="requiredNull">
+      <template>
+        <at-form-random required="null"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="requiredTrue">
+      <template>
+        <at-form-random required="true"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="requiredFalse">
+      <template>
+        <at-form-random required="false"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="required-42">
+      <template>
+        <at-form-random required="-42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="required0">
+      <template>
+        <at-form-random required="0"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="required42">
+      <template>
+        <at-form-random required="42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="requiredEmpty">
+      <template>
+        <at-form-random required=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="requiredLorem ipsum">
+      <template>
+        <at-form-random required="lorem ipsum"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="required{}">
+      <template>
+        <at-form-random required="{}"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="required[]">
+      <template>
+        <at-form-random required="[]"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="requiredFunction">
+      <template>
+        <at-form-random required="function f() { return undefined; }"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="valueNotset">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="valueUndefined">
+      <template>
+        <at-form-random value="undefined"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="valueNull">
+      <template>
+        <at-form-random value="null"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="valueTrue">
+      <template>
+        <at-form-random value="true"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="valueFalse">
+      <template>
+        <at-form-random value="false"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="value-42">
+      <template>
+        <at-form-random value="-42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="value0">
+      <template>
+        <at-form-random value="0"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="value42">
+      <template>
+        <at-form-random value="42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="valueEmpty">
+      <template>
+        <at-form-random value=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="valueLorem ipsum">
+      <template>
+        <at-form-random value="lorem ipsum"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="value{}">
+      <template>
+        <at-form-random value="{}"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="value[]">
+      <template>
+        <at-form-random value="[]"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="valueFunction">
+      <template>
+        <at-form-random value="function f() { return undefined; }"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxCharsNotset">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxCharsUndefined">
+      <template>
+        <at-form-random max-chars="undefined"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxCharsNull">
+      <template>
+        <at-form-random max-chars="null"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxCharsTrue">
+      <template>
+        <at-form-random max-chars="true"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxCharsFalse">
+      <template>
+        <at-form-random max-chars="false"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxChars-42">
+      <template>
+        <at-form-random max-chars="-42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxChars0">
+      <template>
+        <at-form-random max-chars="0"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxChars42">
+      <template>
+        <at-form-random max-chars="42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxCharsEmpty">
+      <template>
+        <at-form-random max-chars=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxCharsLorem ipsum">
+      <template>
+        <at-form-random max-chars="lorem ipsum"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxChars{}">
+      <template>
+        <at-form-random max-chars="{}"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxChars[]">
+      <template>
+        <at-form-random max-chars="[]"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxCharsFunction">
+      <template>
+        <at-form-random max-chars="function f() { return undefined; }"></at-form-random>
+      </template>
+    </test-fixture>
+  <script>
+    suite("basic tests where properties are set as attributes part 1 of 8", function() { 
+    
+      test("labelNotset", function() { 
+        var elt = fixture("labelNotset");
+        assert.equal(elt.label, "");
+      });
+      
+      test("labelUndefined", function() { 
+        var elt = fixture("labelUndefined");
+        assert.equal(elt.label, "undefined");
+      });
+      
+      test("labelNull", function() { 
+        var elt = fixture("labelNull");
+        assert.equal(elt.label, "null");
+      });
+      
+      test("labelTrue", function() { 
+        var elt = fixture("labelTrue");
+        assert.equal(elt.label, "true");
+      });
+      
+      test("labelFalse", function() { 
+        var elt = fixture("labelFalse");
+        assert.equal(elt.label, "false");
+      });
+      
+      test("label-42", function() { 
+        var elt = fixture("label-42");
+        assert.equal(elt.label, "-42");
+      });
+      
+      test("label0", function() { 
+        var elt = fixture("label0");
+        assert.equal(elt.label, "0");
+      });
+      
+      test("label42", function() { 
+        var elt = fixture("label42");
+        assert.equal(elt.label, "42");
+      });
+      
+      test("labelEmpty", function() { 
+        var elt = fixture("labelEmpty");
+        assert.equal(elt.label, "");
+      });
+      
+      test("labelLorem ipsum", function() { 
+        var elt = fixture("labelLorem ipsum");
+        assert.equal(elt.label, "lorem ipsum");
+      });
+      
+      test("label{}", function() { 
+        var elt = fixture("label{}");
+        assert.equal(elt.label, "{}");
+      });
+      
+      test("label[]", function() { 
+        var elt = fixture("label[]");
+        assert.equal(elt.label, "[]");
+      });
+      
+      test("labelFunction", function() { 
+        var elt = fixture("labelFunction");
+        assert.equal(elt.label, "function f() { return undefined; }");
+      });
+      
+    });
+    suite("basic tests where properties are set as attributes part 2 of 8", function() { 
+    
+      test("hideLabelNotset", function() { 
+        var elt = fixture("hideLabelNotset");
+        assert.equal(elt.hideLabel, false);
+      });
+      
+      test("hideLabelUndefined", function() { 
+        var elt = fixture("hideLabelUndefined");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabelNull", function() { 
+        var elt = fixture("hideLabelNull");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabelTrue", function() { 
+        var elt = fixture("hideLabelTrue");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabelFalse", function() { 
+        var elt = fixture("hideLabelFalse");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabel-42", function() { 
+        var elt = fixture("hideLabel-42");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabel0", function() { 
+        var elt = fixture("hideLabel0");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabel42", function() { 
+        var elt = fixture("hideLabel42");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabelEmpty", function() { 
+        var elt = fixture("hideLabelEmpty");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabelLorem ipsum", function() { 
+        var elt = fixture("hideLabelLorem ipsum");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabel{}", function() { 
+        var elt = fixture("hideLabel{}");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabel[]", function() { 
+        var elt = fixture("hideLabel[]");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+      test("hideLabelFunction", function() { 
+        var elt = fixture("hideLabelFunction");
+        assert.equal(elt.hideLabel, true);
+      });
+      
+    });
+    suite("basic tests where properties are set as attributes part 3 of 8", function() { 
+    
+      test("placeholderNotset", function() { 
+        var elt = fixture("placeholderNotset");
+        assert.equal(elt.placeholder, "");
+      });
+      
+      test("placeholderUndefined", function() { 
+        var elt = fixture("placeholderUndefined");
+        assert.equal(elt.placeholder, "undefined");
+      });
+      
+      test("placeholderNull", function() { 
+        var elt = fixture("placeholderNull");
+        assert.equal(elt.placeholder, "null");
+      });
+      
+      test("placeholderTrue", function() { 
+        var elt = fixture("placeholderTrue");
+        assert.equal(elt.placeholder, "true");
+      });
+      
+      test("placeholderFalse", function() { 
+        var elt = fixture("placeholderFalse");
+        assert.equal(elt.placeholder, "false");
+      });
+      
+      test("placeholder-42", function() { 
+        var elt = fixture("placeholder-42");
+        assert.equal(elt.placeholder, "-42");
+      });
+      
+      test("placeholder0", function() { 
+        var elt = fixture("placeholder0");
+        assert.equal(elt.placeholder, "0");
+      });
+      
+      test("placeholder42", function() { 
+        var elt = fixture("placeholder42");
+        assert.equal(elt.placeholder, "42");
+      });
+      
+      test("placeholderEmpty", function() { 
+        var elt = fixture("placeholderEmpty");
+        assert.equal(elt.placeholder, "");
+      });
+      
+      test("placeholderLorem ipsum", function() { 
+        var elt = fixture("placeholderLorem ipsum");
+        assert.equal(elt.placeholder, "lorem ipsum");
+      });
+      
+      test("placeholder{}", function() { 
+        var elt = fixture("placeholder{}");
+        assert.equal(elt.placeholder, "{}");
+      });
+      
+      test("placeholder[]", function() { 
+        var elt = fixture("placeholder[]");
+        assert.equal(elt.placeholder, "[]");
+      });
+      
+      test("placeholderFunction", function() { 
+        var elt = fixture("placeholderFunction");
+        assert.equal(elt.placeholder, "function f() { return undefined; }");
+      });
+      
+    });
+    suite("basic tests where properties are set as attributes part 4 of 8", function() { 
+    
+      test("disabledNotset", function() { 
+        var elt = fixture("disabledNotset");
+        assert.equal(elt.disabled, false);
+      });
+      
+      test("disabledUndefined", function() { 
+        var elt = fixture("disabledUndefined");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabledNull", function() { 
+        var elt = fixture("disabledNull");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabledTrue", function() { 
+        var elt = fixture("disabledTrue");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabledFalse", function() { 
+        var elt = fixture("disabledFalse");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabled-42", function() { 
+        var elt = fixture("disabled-42");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabled0", function() { 
+        var elt = fixture("disabled0");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabled42", function() { 
+        var elt = fixture("disabled42");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabledEmpty", function() { 
+        var elt = fixture("disabledEmpty");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabledLorem ipsum", function() { 
+        var elt = fixture("disabledLorem ipsum");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabled{}", function() { 
+        var elt = fixture("disabled{}");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabled[]", function() { 
+        var elt = fixture("disabled[]");
+        assert.equal(elt.disabled, true);
+      });
+      
+      test("disabledFunction", function() { 
+        var elt = fixture("disabledFunction");
+        assert.equal(elt.disabled, true);
+      });
+      
+    });
+    suite("basic tests where properties are set as attributes part 5 of 8", function() { 
+    
+      test("hideNotset", function() { 
+        var elt = fixture("hideNotset");
+        assert.equal(elt.hide, false);
+      });
+      
+      test("hideUndefined", function() { 
+        var elt = fixture("hideUndefined");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hideNull", function() { 
+        var elt = fixture("hideNull");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hideTrue", function() { 
+        var elt = fixture("hideTrue");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hideFalse", function() { 
+        var elt = fixture("hideFalse");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hide-42", function() { 
+        var elt = fixture("hide-42");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hide0", function() { 
+        var elt = fixture("hide0");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hide42", function() { 
+        var elt = fixture("hide42");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hideEmpty", function() { 
+        var elt = fixture("hideEmpty");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hideLorem ipsum", function() { 
+        var elt = fixture("hideLorem ipsum");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hide{}", function() { 
+        var elt = fixture("hide{}");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hide[]", function() { 
+        var elt = fixture("hide[]");
+        assert.equal(elt.hide, true);
+      });
+      
+      test("hideFunction", function() { 
+        var elt = fixture("hideFunction");
+        assert.equal(elt.hide, true);
+      });
+      
+    });
+    suite("basic tests where properties are set as attributes part 6 of 8", function() { 
+    
+      test("requiredNotset", function() { 
+        var elt = fixture("requiredNotset");
+        assert.equal(elt.required, false);
+      });
+      
+      test("requiredUndefined", function() { 
+        var elt = fixture("requiredUndefined");
+        assert.equal(elt.required, true);
+      });
+      
+      test("requiredNull", function() { 
+        var elt = fixture("requiredNull");
+        assert.equal(elt.required, true);
+      });
+      
+      test("requiredTrue", function() { 
+        var elt = fixture("requiredTrue");
+        assert.equal(elt.required, true);
+      });
+      
+      test("requiredFalse", function() { 
+        var elt = fixture("requiredFalse");
+        assert.equal(elt.required, true);
+      });
+      
+      test("required-42", function() { 
+        var elt = fixture("required-42");
+        assert.equal(elt.required, true);
+      });
+      
+      test("required0", function() { 
+        var elt = fixture("required0");
+        assert.equal(elt.required, true);
+      });
+      
+      test("required42", function() { 
+        var elt = fixture("required42");
+        assert.equal(elt.required, true);
+      });
+      
+      test("requiredEmpty", function() { 
+        var elt = fixture("requiredEmpty");
+        assert.equal(elt.required, true);
+      });
+      
+      test("requiredLorem ipsum", function() { 
+        var elt = fixture("requiredLorem ipsum");
+        assert.equal(elt.required, true);
+      });
+      
+      test("required{}", function() { 
+        var elt = fixture("required{}");
+        assert.equal(elt.required, true);
+      });
+      
+      test("required[]", function() { 
+        var elt = fixture("required[]");
+        assert.equal(elt.required, true);
+      });
+      
+      test("requiredFunction", function() { 
+        var elt = fixture("requiredFunction");
+        assert.equal(elt.required, true);
+      });
+      
+    });
+    suite("basic tests where properties are set as attributes part 7 of 8", function() { 
+    
+      test("valueNotset", function() { 
+        var elt = fixture("valueNotset");
+        assert.equal(elt.value, "");
+      });
+      
+      test("valueUndefined", function() { 
+        var elt = fixture("valueUndefined");
+        assert.equal(elt.value, "undefined");
+      });
+      
+      test("valueNull", function() { 
+        var elt = fixture("valueNull");
+        assert.equal(elt.value, "null");
+      });
+      
+      test("valueTrue", function() { 
+        var elt = fixture("valueTrue");
+        assert.equal(elt.value, "true");
+      });
+      
+      test("valueFalse", function() { 
+        var elt = fixture("valueFalse");
+        assert.equal(elt.value, "false");
+      });
+      
+      test("value-42", function() { 
+        var elt = fixture("value-42");
+        assert.equal(elt.value, "-42");
+      });
+      
+      test("value0", function() { 
+        var elt = fixture("value0");
+        assert.equal(elt.value, "0");
+      });
+      
+      test("value42", function() { 
+        var elt = fixture("value42");
+        assert.equal(elt.value, "42");
+      });
+      
+      test("valueEmpty", function() { 
+        var elt = fixture("valueEmpty");
+        assert.equal(elt.value, "");
+      });
+      
+      test("valueLorem ipsum", function() { 
+        var elt = fixture("valueLorem ipsum");
+        assert.equal(elt.value, "lorem ipsum");
+      });
+      
+      test("value{}", function() { 
+        var elt = fixture("value{}");
+        assert.equal(elt.value, "{}");
+      });
+      
+      test("value[]", function() { 
+        var elt = fixture("value[]");
+        assert.equal(elt.value, "[]");
+      });
+      
+      test("valueFunction", function() { 
+        var elt = fixture("valueFunction");
+        assert.equal(elt.value, "function f() { return undefined; }");
+      });
+      
+    });
+    suite("basic tests where properties are set as attributes part 8 of 8", function() { 
+    
+      test("maxCharsNotset", function() { 
+        var elt = fixture("maxCharsNotset");
+        assert.equal(elt.maxChars, "32");
+      });
+      
+      test("maxCharsUndefined", function() { 
+        var elt = fixture("maxCharsUndefined");
+        assert.deepEqual(elt.maxChars, NaN);
+      });
+      
+      test("maxCharsNull", function() { 
+        var elt = fixture("maxCharsNull");
+        assert.deepEqual(elt.maxChars, NaN);
+      });
+      
+      test("maxCharsTrue", function() { 
+        var elt = fixture("maxCharsTrue");
+        assert.deepEqual(elt.maxChars, NaN);
+      });
+      
+      test("maxCharsFalse", function() { 
+        var elt = fixture("maxCharsFalse");
+        assert.deepEqual(elt.maxChars, NaN);
+      });
+      
+      test("maxChars-42", function() { 
+        var elt = fixture("maxChars-42");
+        assert.equal(elt.maxChars, "-42");
+      });
+      
+      test("maxChars0", function() { 
+        var elt = fixture("maxChars0");
+        assert.equal(elt.maxChars, "0");
+      });
+      
+      test("maxChars42", function() { 
+        var elt = fixture("maxChars42");
+        assert.equal(elt.maxChars, "42");
+      });
+      
+      test("maxCharsEmpty", function() { 
+        var elt = fixture("maxCharsEmpty");
+        assert.equal(elt.maxChars, "");
+      });
+      
+      test("maxCharsLorem ipsum", function() { 
+        var elt = fixture("maxCharsLorem ipsum");
+        assert.deepEqual(elt.maxChars, NaN);
+      });
+      
+      test("maxChars{}", function() { 
+        var elt = fixture("maxChars{}");
+        assert.deepEqual(elt.maxChars, NaN);
+      });
+      
+      test("maxChars[]", function() { 
+        var elt = fixture("maxChars[]");
+        assert.deepEqual(elt.maxChars, NaN);
+      });
+      
+      test("maxCharsFunction", function() { 
+        var elt = fixture("maxCharsFunction");
+        assert.deepEqual(elt.maxChars, NaN);
+      });
+      
+    });
+    suite("basic tests where properties are set as in code", function() { 
+    });
+  </script>
+  </body>
+</html>
