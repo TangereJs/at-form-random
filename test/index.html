@@ -9,13 +9,25 @@
 
 <body>
   <script>
+
+    // TODO
+    // do at-form-random input validation tests
+    // do the validation state tests
+    // hide and disabled do not affect valid state
+    // errorMessage makes element invalid
+    // required and value may make element invalid
+    // maxChars can make element invalid
+    // auto-validate affects whether validation message is displayed
+
     WCT.loadSuites([
       'basic-invalid.html',
       'basic-invalid.html?dom=shadow',
       'basic-valid.html',
       'basic-valid.html?dom=shadow',
-      // 'uiinteraction.html',
-      // 'uiinteraction.html?dom=shadow',
+      'uiinteraction.html',
+      'uiinteraction.html?dom=shadow',
+      'validate-function.html',
+      'validate-function.html?dom=shadow',
     ]);
   </script>
 </body>

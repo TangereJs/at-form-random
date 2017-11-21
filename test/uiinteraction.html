@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>at-form-random tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <link rel="import" href="../at-form-random.html"/>
+    <link rel="import" href="../../iron-test-helpers/iron-test-helpers.html"/>
+  </head>
+  <body>
+    <test-fixture id="initial">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <script>
+      suite("ui interaction tests", function () {
+
+        function assertInitialState(elt) {
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        }
+
+        function getDisplayValue(elt) {
+          var computedStyle = window.getComputedStyle(elt);
+          var displayValue = computedStyle.getPropertyValue('display');
+          return displayValue;
+        }
+
+        function assertLabelState(elt, pHasClass, pDispVal) {
+          var hasClass = Polymer.dom(elt).classList.contains('hidden');
+          assert.equal(hasClass, pHasClass);
+
+          var displayValue = getDisplayValue(elt);
+          assert.equal(displayValue, pDispVal);
+        }
+
+        test("label interaction tests", function () {
+          var elt = fixture("initial");
+          assertInitialState(elt);
+          
+          var eventCount = 0;
+
+          elt.addEventListener('value-changed', function() {
+            eventCount += 1;
+          });
+
+          // label is initially shown
+          assertLabelState(elt.$.label, false, 'inline');
+          elt.hideLabel = true;
+          // label is now hidden
+          assertLabelState(elt.$.label, true, 'none');
+          elt.hideLabel = false;
+          // label is now shown
+          assertLabelState(elt.$.label, false, 'inline');
+
+          // assert that events didn't trigger
+          assert.equal(eventCount, 0);
+
+          // set label text content
+          var textContent = "lorem ipsum";
+          elt.label = textContent;
+          assert.equal(elt.label, textContent);
+          assert.equal(elt.$.label.textContent, textContent);
+
+          elt.label = "";
+          assert.equal(elt.label, "");
+          assert.equal(elt.$.label.textContent, "");
+
+          // assert that events didn't trigger
+          assert.equal(eventCount, 0);
+
+          // when label is hidden text content is still set
+          elt.hideLabel = true;
+          elt.label = textContent;
+          assertLabelState(elt.$.label, true, 'none');
+          assert.equal(elt.label, textContent);
+          assert.equal(elt.$.label.textContent, textContent);
+          assert.equal(eventCount, 0);
+
+          elt.hideLabel = false;
+          elt.label = "";
+
+          // set the placeholder and assert that placeholder is set on input
+          var placeholderText = "lorem ipsum";
+          elt.placeholder = placeholderText;
+          assert.equal(elt.placeholder, placeholderText);
+          assert.equal(elt.$.input.placeholder, placeholderText);
+
+          elt.placeholder = "";
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.$.input.placeholder, "");
+        });
+
+        test("placeholder interaction tests", function () {
+          var elt = fixture("initial");
+          assertInitialState(elt);
+          
+          var eventCount = 0;
+
+          elt.addEventListener('value-changed', function() {
+            eventCount += 1;
+          });
+
+          // set the placeholder and assert that placeholder is set on input
+          var placeholderText = "lorem ipsum";
+          elt.placeholder = placeholderText;
+          assert.equal(elt.placeholder, placeholderText);
+          assert.equal(elt.$.input.placeholder, placeholderText);
+
+          assert.equal(eventCount, 0);
+
+          elt.placeholder = "";
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.$.input.placeholder, "");
+
+          assert.equal(eventCount, 0);
+        });
+
+        function assertDisabledState(elt, pHasClass) {
+          var hasClass = Polymer.dom(elt.$.atContainer).classList.contains('disabled');
+          assert.equal(hasClass, pHasClass);
+        }
+
+        test("disabled interaction tests", function () {
+          var elt = fixture("initial");
+          assertInitialState(elt);
+          
+          var eventCount = 0;
+
+          elt.addEventListener('value-changed', function() {
+            eventCount += 1;
+          });
+
+          assertDisabledState(elt, false);
+
+          // set the disabled and inspect html structure
+          elt.disabled = true;
+          assertDisabledState(elt, true);
+
+          assert.equal(eventCount, 0);
+          
+          elt.disabled = false;
+          assertDisabledState(elt, false);
+
+          assert.equal(eventCount, 0);
+        });
+
+        function assertHideState(elt, pHasClass, pDisplVal) {
+          var hasClass = Polymer.dom(elt.$.atContainer).classList.contains('hidden');
+          assert.equal(hasClass, pHasClass);
+
+          var displayValue = getDisplayValue(elt.$.atContainer);
+          assert.equal(displayValue, pDisplVal);
+        }
+
+        test("hide interaction tests", function() {
+          var elt = fixture("initial");
+          assertInitialState(elt);
+          
+          var eventCount = 0;
+
+          elt.addEventListener('value-changed', function() {
+            eventCount += 1;
+          });
+
+          assertHideState(elt, false, 'block');
+
+          elt.hide = true;
+          assertHideState(elt, true, 'none');
+          assert.equal(eventCount, 0);
+
+          elt.hide = false;
+          assertHideState(elt, false, 'block');
+          assert.equal(eventCount, 0);
+        });
+
+        test("required interaction tests", function() { 
+          var elt = fixture("initial");
+          assertInitialState(elt);
+          
+          var eventCount = 0;
+
+          elt.addEventListener('value-changed', function() {
+            eventCount += 1;
+          });
+
+          assert.equal(elt.required, false);
+          assert.equal(elt.valid, true);
+          assert.equal(eventCount, 0);
+
+          elt.required = true;
+
+          assert.equal(elt.required, true);
+          // setting required to true, sets the value 
+          assert.equal(elt.valid, true);
+          assert.equal(eventCount, 1);
+
+          elt.required = false;
+
+          assert.equal(elt.required, false);
+          assert.equal(elt.valid, true);
+          assert.equal(eventCount, 1);
+
+          elt.required = true;
+
+          assert.equal(elt.required, true);
+          assert.equal(elt.valid, true);
+          assert.equal(eventCount, 1);
+
+          elt.required = false;
+
+          assert.equal(elt.required, false);
+          assert.equal(elt.valid, true);
+          assert.equal(eventCount, 1);
+
+        });
+
+        test("value interaction tests", function() {
+          var elt = fixture("initial");
+          assertInitialState(elt);
+          
+          var eventCount = 0;
+
+          elt.addEventListener('value-changed', function() {
+            eventCount += 1;
+          });
+
+          assert.equal(elt.value, "");
+          assert.equal(eventCount, 0);
+
+          var actValue = "demo 1";
+          var expValue = "demo 1";
+          elt.value = actValue;
+
+          assert.equal(elt.value, expValue);
+          assert.equal(eventCount, 1);
+
+          elt.value = actValue;
+
+          assert.equal(elt.value, expValue);
+          assert.equal(eventCount, 1);
+          
+          actValue = "demo 2";
+          expValue = "demo 2";
+          elt.value = actValue;
+
+          assert.equal(elt.value, expValue);
+          assert.equal(eventCount, 2);
+
+          actValue = "demo 3";
+          expValue = "demo 3";
+          elt.value = actValue;
+
+          assert.equal(elt.value, expValue);
+          assert.equal(eventCount, 3);
+
+        });
+
+        test("maxChars interaction tests", function() {
+          var elt = fixture("initial");
+          assertInitialState(elt);
+          
+          var eventCount = 0;
+
+          elt.addEventListener('value-changed', function() {
+            eventCount += 1;
+          });
+
+          assert.equal(elt.maxChars, 32);
+          assert.equal(eventCount, 0);
+
+          elt.maxChars = 64;
+
+          assert.equal(elt.maxChars, 64);
+          assert.equal(eventCount, 0);
+
+          elt.maxChars = 53;
+
+          assert.equal(elt.maxChars, 53);
+          assert.equal(eventCount, 0);
+          
+        });
+
+      });
+    </script>
+  </body>
+</html>
