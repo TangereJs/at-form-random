@@ -1,0 +1,588 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>at-form-random tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <link rel="import" href="../at-form-random.html"/>
+    <link rel="import" href="../../iron-test-helpers/iron-test-helpers.html"/>
+  </head>
+  <body>
+    <test-fixture id="initial">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="labelIsDemo_label_1">
+      <template>
+        <at-form-random label="Demo label 1"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="labelIsDemo_label_2">
+      <template>
+        <at-form-random label="Demo label 2"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideLabelIsEmpty">
+      <template>
+        <at-form-random hide-label=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholderIsDemo_placeholder_1">
+      <template>
+        <at-form-random placeholder="demo placeholder 1"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="placeholderIsDemo_placeholder_2">
+      <template>
+        <at-form-random placeholder="demo placeholder 2"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="disabledIsEmpty">
+      <template>
+        <at-form-random disabled=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="hideIsEmpty">
+      <template>
+        <at-form-random hide=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="requiredIsEmpty">
+      <template>
+        <at-form-random required=""></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="valueIsLorem_ipsum_1">
+      <template>
+        <at-form-random value="lorem ipsum 1"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="valueIsLorem_ipsum_2">
+      <template>
+        <at-form-random value="lorem ipsum 2"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxCharsIs0">
+      <template>
+        <at-form-random max-chars="0"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="maxCharsIs42">
+      <template>
+        <at-form-random max-chars="42"></at-form-random>
+      </template>
+    </test-fixture>
+    <test-fixture id="propertyTests">
+      <template>
+        <at-form-random></at-form-random>
+      </template>
+    </test-fixture>
+    <script>
+      suite("initial", function () {
+        test("test initial values", function () {
+          var elt = fixture("initial");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("label tests", function () {
+        test("labelIsDemo_label_1", function () {
+          var elt = fixture("labelIsDemo_label_1");
+          assert.equal(elt.label, "Demo label 1");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+        test("labelIsDemo_label_2", function () {
+          var elt = fixture("labelIsDemo_label_2");
+          assert.equal(elt.label, "Demo label 2");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("hideLabel tests", function () {
+        test("hideLabelIsEmpty", function () {
+          var elt = fixture("hideLabelIsEmpty");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, true);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("placeholder tests", function () {
+        test("placeholderIsDemo_placeholder_1", function () {
+          var elt = fixture("placeholderIsDemo_placeholder_1");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "demo placeholder 1");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+        test("placeholderIsDemo_placeholder_2", function () {
+          var elt = fixture("placeholderIsDemo_placeholder_2");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "demo placeholder 2");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("disabled tests", function () {
+        test("disabledIsEmpty", function () {
+          var elt = fixture("disabledIsEmpty");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, true);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("hide tests", function () {
+        test("hideIsEmpty", function () {
+          var elt = fixture("hideIsEmpty");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, true);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("required tests", function () {
+        test("requiredIsEmpty", function () {
+          var elt = fixture("requiredIsEmpty");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, true);
+          assert.notEqual(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("value tests", function () {
+        test("valueIsLorem_ipsum_1", function () {
+          var elt = fixture("valueIsLorem_ipsum_1");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "lorem ipsum 1");
+          assert.equal(elt.maxChars, 32);
+        });
+        test("valueIsLorem_ipsum_2", function () {
+          var elt = fixture("valueIsLorem_ipsum_2");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "lorem ipsum 2");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("maxChars tests", function () {
+        test("maxCharsIs0", function () {
+          var elt = fixture("maxCharsIs0");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 0);
+        });
+        test("maxCharsIs42", function () {
+          var elt = fixture("maxCharsIs42");
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 42);
+        });
+      });
+      suite("Property Tests", function () {
+        test("initial property values set in code", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("label property tests", function () {
+        test("label is Demo label 1", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "Demo label 1";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "Demo label 1");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+        test("label is Demo label 2", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "Demo label 2";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "Demo label 2");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("hideLabel property tests", function () {
+        test("hideLabel is true", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = true;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, true);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+        test("hideLabel is false", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("placeholder property tests", function () {
+        test("placeholder is demo placeholder 1", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "demo placeholder 1";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "demo placeholder 1");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+        test("placeholder is demo placeholder 2", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "demo placeholder 2";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "demo placeholder 2");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("disabled property tests", function () {
+        test("disabled is true", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = true;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, true);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+        test("disabled is false", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("hide property tests", function () {
+        test("hide is true", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = true;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, true);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+        test("hide is false", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("required property tests", function () {
+        test("required is true", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = true;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, true);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+        test("required is false", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("value property tests", function () {
+        test("value is lorem ipsum 1", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "lorem ipsum 1";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "lorem ipsum 1");
+          assert.equal(elt.maxChars, 32);
+        });
+        test("value is lorem ipsum 2", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "lorem ipsum 2";
+          elt.maxChars = 32;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "lorem ipsum 2");
+          assert.equal(elt.maxChars, 32);
+        });
+      });
+      suite("maxChars property tests", function () {
+        test("maxChars is 0", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 0;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 0);
+        });
+        test("maxChars is 42", function () {
+          var elt = fixture("propertyTests");
+          elt.label = "";
+          elt.hideLabel = false;
+          elt.placeholder = "";
+          elt.disabled = false;
+          elt.hide = false;
+          elt.required = false;
+          elt.value = "";
+          elt.maxChars = 42;
+          assert.equal(elt.label, "");
+          assert.equal(elt.hideLabel, false);
+          assert.equal(elt.placeholder, "");
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.hide, false);
+          assert.equal(elt.required, false);
+          assert.equal(elt.value, "");
+          assert.equal(elt.maxChars, 42);
+        });
+      });
+    </script>
+  </body>
+</html>
