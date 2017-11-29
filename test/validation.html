@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>at-form-random tests</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../iron-test-helpers/test-helpers.js"></script>
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
+  <link rel="import" href="../at-form-random.html">
+
+</head>
+
+<body>
+
+  <test-fixture id="propertyTests">
+    <template>
+      <at-form-random></at-form-random>
+    </template>
+  </test-fixture>
+
+  <script>
+
+    suite('hide and disabled do not affect valid state', function() {
+
+      test('hide when element is valid', function() {
+        var elt = fixture('propertyTests');
+
+        // element is initially valid
+        var valid = elt.validate();
+        assert.equal(valid, true);
+
+        // set hide to true
+        elt.hide = true;
+
+        // element remains valid
+        valid = elt.validate();
+        assert.equal(valid, true);
+
+        // set hide to true
+        elt.hide = false;
+
+        // element remains valid
+        valid = elt.validate();
+        assert.equal(valid, true);
+      });
+
+      test('hide when element is invalid', function() {
+        var elt = fixture('propertyTests');
+
+        // element is initially valid
+        var valid = elt.validate();
+        assert.equal(valid, true);
+
+        // make element invalid
+        elt.errorMessage = "Lorem Ipsum";
+
+        valid = elt.validate();
+        assert.equal(valid, false);
+
+        // set hide to true
+        elt.hide = true;
+
+        // element remains invalid
+        valid = elt.validate();
+        assert.equal(valid, false);
+
+        // set hide to true
+        elt.hide = false;
+
+        // element remains invalid
+        valid = elt.validate();
+        assert.equal(valid, false);
+      });
+
+      test('disabled when element is valid', function() {
+        var elt = fixture('propertyTests');
+
+        // element is initially valid
+        var valid = elt.validate();
+        assert.equal(valid, true);
+
+        // set disabled to true
+        elt.disabled = true;
+
+        // element remains valid
+        valid = elt.validate();
+        assert.equal(valid, true);
+
+        // set disabled to true
+        elt.disabled = false;
+
+        // element remains valid
+        valid = elt.validate();
+        assert.equal(valid, true);
+      });
+
+      test('disabled when element is valid', function() {
+        var elt = fixture('propertyTests');
+
+        // element is initially valid
+        var valid = elt.validate();
+        assert.equal(valid, true);
+
+        // make element invalid
+        elt.errorMessage = "Lorem Ipsum";
+
+        valid = elt.validate();
+        assert.equal(valid, false);
+
+        // set disabled to true
+        elt.disabled = true;
+
+        // element remains invalid
+        valid = elt.validate();
+        assert.equal(valid, false);
+
+        // set disabled to true
+        elt.disabled = false;
+
+        // element remains invalid
+        valid = elt.validate();
+        assert.equal(valid, false);
+      });
+
+    });
+
+    suite('errorMessage makes element invalid', function() {
+
+      test('element is valid, make it invalid with errorMessage', function() {
+        var elt = fixture('propertyTests');
+
+        // element is initially valid
+        var valid = elt.validate();
+        assert.equal(valid, true);
+
+        // set errorMessage 
+        elt.errorMessage = "Error Message";
+
+        // element becomes invalid
+        valid = elt.validate();
+        assert.equal(valid, false);
+
+        // clear errorMessage 
+        elt.errorMessage = "";
+
+        // element becomes valid
+        valid = elt.validate();
+        assert.equal(valid, true);
+      });
+
+      test('element is invalid, it remains invalid with errorMessage', function() {
+        // at-form-random can not be made invalid with required or maxChars
+        // because inspecting valid state causes value to update in a way that makes element valid
+      });
+
+    });
+
+    suite('required and maxChars make element invalid', function() {
+
+      test('required can not make element invalid', function() {
+        var elt = fixture('propertyTests');
+
+        // element is initially valid
+        var valid = elt.validate();
+        assert.equal(valid, true);
+
+        // value is initially empty
+        assert.equal(elt.value, '');
+        // required is initially false
+        assert.equal(elt.required, false);
+
+        // set required to true
+        elt.required = true;
+        assert.equal(elt.required, true);
+
+        // element remains valid because its designed to be that way
+        var valid = elt.validate();
+        assert.equal(valid, true);
+        // and value length is non zero
+        assert.notEqual(elt.value, 0);
+
+        // set required to false
+        elt.required = false;
+        assert.equal(elt.required, false);
+
+        // element remains valid because its designed to be that way
+        var valid = elt.validate();
+        assert.equal(valid, true);
+        // and value length remains non zero
+        assert.notEqual(elt.value, 0);
+      });
+
+      test('maxChars can makes element invalid', function() {
+        var elt = fixture('propertyTests');
+
+        // value is initially empty
+        assert.equal(elt.value, '');
+        // maxChars is 32
+        assert.equal(elt.maxChars, 32);
+
+        elt.value = "lorem ipsum";
+        
+        // element remains valid
+        var valid = elt.validate();
+        assert.equal(valid, true);
+
+        elt.maxChars = 5;
+        
+        // element becomes invalid
+        var valid = elt.validate();
+        assert.equal(valid, false);
+
+        elt.value = "lorem";
+
+        // element becomes valid
+        var valid = elt.validate();
+        assert.equal(valid, true);
+      });
+
+    });
+
+    // TODO
+    // do the validation state tests
+    // auto-validate affects whether validation message is displayed
+
+
+  </script>
+
+</body>
+
+</html>
