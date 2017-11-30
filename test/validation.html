@@ -227,10 +227,38 @@
 
     });
 
-    // TODO
-    // do the validation state tests
-    // auto-validate affects whether validation message is displayed
+    suite('auto-validate affects if validation message is displayed', function() {
 
+      test('auto-validate true shows the validation message', function() {
+        var elt = fixture('propertyTests');
+
+        elt.value = "lorem ipsum";
+        elt.maxChars = 5;
+
+        var valid = elt.validate();
+        assert.equal(valid, false);
+
+        var errorMessage = elt.$.hint.textContent;
+        assert.equal(errorMessage, '');
+
+        elt.autoValidate = true;
+
+        valid = elt.validate();
+        assert.equal(valid, false);
+
+        errorMessage = elt.$.hint.textContent;
+        assert.notEqual(errorMessage, '');
+
+        elt.autoValidate = false;
+        
+        valid = elt.validate();
+        assert.equal(valid, false);
+
+        errorMessage = elt.$.hint.textContent;
+        assert.equal(errorMessage, '');
+      });
+
+    });
 
   </script>
 
