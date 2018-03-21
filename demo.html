@@ -8,12 +8,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-  <link rel="import" href="../at-theme/at-theme.html" />
+  <link rel="import" href="../at-core-style-classes/at-core-style-classes.html" />
   <link rel="import" href="at-form-random.html" />
 
-  <style type="text/css" is="custom-style">
+  <style is="custom-style" include="at-core-style-classes">
     .demo {
-      margin: 0 0 6px 0;    
+      margin: 0 0 6px 0;
     }
 
     .hint {
@@ -26,65 +26,65 @@
 
 </head>
 <body>
-  <div class="layout horizontal demo">
-    <div class="flex-2"></div>
-    <div class="flex-8">
-      <at-form-random 
-        label="Demo 1 (maxChars=0, auto-validate)" 
+  <div class="layout-horizontal demo">
+    <div class="layout-flex-2"></div>
+    <div class="layout-flex-8">
+      <at-form-random
+        label="Demo 1 (maxChars=0, auto-validate)"
         auto-validate
       ></at-form-random>
     </div>
-    <div class="flex-2"></div>    
+    <div class="layout-flex-2"></div>
   </div>
 
-  <div class="layout horizontal demo">
-    <div class="flex-2"></div>
-    <div class="flex-8">
+  <div class="layout-horizontal demo">
+    <div class="layout-flex-2"></div>
+    <div class="layout-flex-8">
       <at-form-random
         label="Demo 2 (maxChars=16, auto-validate)"
         auto-validate
         max-chars="16"
       ></at-form-random>
     </div>
-    <div class="flex-2"></div>
+    <div class="layout-flex-2"></div>
   </div>
 
-  <div class="layout horizontal demo">
-    <div class="flex-2"></div>
-    <div class="flex-8">
+  <div class="layout-horizontal demo">
+    <div class="layout-flex-2"></div>
+    <div class="layout-flex-8">
       <at-form-random
         label="Demo 3 (maxChars=32, auto-validate)"
         auto-validate
         max-chars="32"
       ></at-form-random>
     </div>
-    <div class="flex-2"></div>
+    <div class="layout-flex-2"></div>
   </div>
 
-  <div class="layout horizontal demo">
-    <div class="flex-2"></div>
-    <div class="flex-8">
+  <div class="layout-horizontal demo">
+    <div class="layout-flex-2"></div>
+    <div class="layout-flex-8">
       <at-form-random
         label="Demo 4 (maxChars=27, auto-validate)"
         auto-validate
         max-chars="27"
       ></at-form-random>
     </div>
-    <div class="flex-2"></div>
+    <div class="layout-flex-2"></div>
   </div>
 
-  <div class="layout horizontal demo">
-    <div class="flex-2"></div>
-    <div class="flex-8">
-      <at-form-random 
-        label="Demo 5 (maxChars=13, auto-validate, required)" 
+  <div class="layout-horizontal demo">
+    <div class="layout-flex-2"></div>
+    <div class="layout-flex-8">
+      <at-form-random
+        label="Demo 5 (maxChars=13, auto-validate, required)"
         auto-validate
         required
         max-chars="13"
       ></at-form-random>
       <p class="hint">When required, random value is generated on first validation</p>
     </div>
-    <div class="flex-2"></div>    
+    <div class="layout-flex-2"></div>
   </div>
 
 </body>
