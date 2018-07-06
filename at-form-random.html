@@ -214,11 +214,21 @@
     },
 
     _internalValidStateUpdate: function(required, maxChars) {
-      if (this._isReady) {
-        this.validate();
+      if (!this._isReady) return;
+        
+      if (this._showErrorsWhenAttached) {
+        this._showErrorsWhenAttached = undefined;
+        this.validate(true);
+        return;
+      
+      } else if (this._clearErrorsWhenAttached) {
+        this._clearErrorsWhenAttached = undefined;
+        this.validate(false);
+        return;
       }
-    },
 
+      this.validate();   
+    },
 
     _valueChanged: function(newValue, oldValue) {
 
@@ -244,11 +254,18 @@
     },
 
     validate: function (showError) {
+      if (!this.$ && this.autoValidate == false && showError == true) {
+        // showError should be true when _internalValidStateUpdate is called from ready after element is attached
+        this._showErrorsWhenAttached = true;
+      
+      } else if (!this.$ && this.autoValidate == true && showError == false) {
+        this._clearErrorsWhenAttached = true;
+      }
 
       if(showError === undefined) showError = this.autoValidate;
 
       // validate must validate the current value
-      var inputValue = this.$.input.value;
+      var inputValue = this.$ ? this.$.input.value : this.value;
 
       // this.value === null && inputValue === "" means that null value was set in code and user didn't type anything; in this case null value is validated
       // this.value !== null && inputValue ===  "" means that value is not null and user has cleared the input field; value of empty string is validated
@@ -315,11 +332,10 @@
     // include _updateUIValidState function and implement it to update
     // the UI to reflect the new valid state
     _updateUIValidState: function (isValid) {
+      if (!this.$) return;
 
-      var label = this.$.label;
-      this.toggleClass('error', !isValid, label);
-      var contentContainer = this.$.contentContainer;
-      this.toggleClass('error', !isValid, contentContainer);
+      this.toggleClass('error', !isValid, this.$.label);
+      this.toggleClass('error', !isValid, this.$.contentContainer);
     },
 
     focus: function() {
